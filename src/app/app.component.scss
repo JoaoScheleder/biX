@@ -1,0 +1,19 @@
+div.dark-theme-mode{
+    height: 100%;
+
+}
+
+.flex-container{
+    display: flex;
+    flex-direction: column;
+    button{
+        width: 200px;
+        text-align: left;
+        height: 50px;
+
+        mat-icon{
+            margin-right: 20px;
+        }
+    }
+}
+

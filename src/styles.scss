@@ -1,1 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400&display=swap');
+
 /* You can add global styles to this file, and also import other style files */
+body{
+    margin: 0;
+
+}
+html, body { 
+    height: 100%; 
+
+}
+body { 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+    padding: 0;  
+}   
+
+
+@import "~@angular/material/theming";
+
+@include mat-core();
+
+
+$market-primary-dark: mat-palette($mat-blue);
+$market-accent-dark: mat-palette($mat-blue-grey);
+$market-warn-dark: mat-palette($mat-red);
+
+$market-theme-dark: mat-dark-theme($market-primary-dark, $market-accent-dark, $market-warn-dark);
+.dark-theme-mode {
+    @include angular-material-theme($market-theme-dark);
+}
+
+

@@ -1,0 +1,122 @@
+
+<div class="filters-container">
+
+    <mat-form-field>
+
+        <mat-label>Filtro</mat-label>
+        <mat-select [(value)] = "selected">
+
+            <mat-option value = "tudo" checked>Tudo</mat-option>
+            <mat-option value = "corte">Cortes</mat-option>
+            <mat-option value = "barba">Barba</mat-option>
+            <mat-option value = "vinho">Vinho</mat-option>
+            <mat-option value = "produtos">Produtos</mat-option>
+
+        </mat-select>
+
+    </mat-form-field>
+
+
+    <mat-form-field>
+     <mat-label>Data incial</mat-label>
+     <input matInput [matDatepicker]="picker">
+     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+     <mat-datepicker #picker></mat-datepicker>
+   </mat-form-field>
+
+   <mat-form-field >
+     <mat-label>Data final</mat-label>
+     <input matInput [matDatepicker]="picker2">
+     <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+     <mat-datepicker #picker2></mat-datepicker>
+   </mat-form-field>
+
+   
+
+</div>
+
+<div class="painel-container">
+
+    <div class="card">
+        <div class="progress-chart">
+            <p>Porcentagem</p>
+            <mat-progress-spinner
+                class="example-margin"
+                color = "primary"
+                mode  = "determinate"
+                value = "70">
+            </mat-progress-spinner>
+           
+        </div>
+        <div class="indicador">
+            Cortes
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="progress-chart">
+            <p>Porcentagem</p>
+            <mat-progress-spinner
+                class="example-margin"
+                color = "primary"
+                mode  = "determinate"
+                value = "90">
+            </mat-progress-spinner>
+        </div>
+        <div class="indicador">
+            Cortes
+        </div>
+    </div>
+
+    <div class="card">
+
+        <div class="progress-chart">
+            <p>Porcentagem</p>
+            <mat-progress-spinner
+            class="example-margin"
+            color = "primary"
+            mode  = "determinate"
+            value = "32">
+        </mat-progress-spinner>
+        </div>
+        <div class="indicador">
+            Cortes
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+<div class="container" style="height: 1000px;">
+
+    
+
+    <div class="chartBar">
+
+        <div class="bar-chart-container">
+            <chart [type]="type1"  [data]="data1" [options]="options1" style="height: 300px ;"></chart>
+        </div>
+
+     
+
+      
+
+
+    </div>
+
+    <div class="chartBar">
+        <div class="chart">
+            <chart [type]="type2" [data]="data2" [options]="options2"></chart>
+        </div>
+        <div class="chart">
+            <chart [type]="type3" [data]="data3" [options]="options3"></chart>
+        </div>
+        <div class="chart">
+            <chart [type]="type3" [data]="data3" [options]="options3"></chart>
+        </div>
+
+    </div>
+</div>

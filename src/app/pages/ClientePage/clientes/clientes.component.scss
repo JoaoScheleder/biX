@@ -1,0 +1,26 @@
+div.container{
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    flex-direction: column;
+
+}
+table {
+    width: 95vw;
+    margin: 0 auto;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 95vw;
+    margin: 0 auto;
+  }
+  
+  td, th {
+    width: 25%;
+  }
+
+  mat-paginator{
+    width: 95vw;
+    margin: 0 auto;
+  }
