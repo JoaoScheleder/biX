@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
       }
     },
     responsive: true,
-    maintainAspectRatio: true,
+    maintainAspectRatio: false,
     scales: {
         yAxes : [{
             ticks : {

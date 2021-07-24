@@ -37,38 +37,41 @@
 
 <div class="painel-container">
 
-    <div class="card">
-        <div class="progress-chart">
-            <p>Porcentagem</p>
-            <mat-progress-spinner
-                class="example-margin"
-                color = "primary"
-                mode  = "determinate"
-                value = "70">
-            </mat-progress-spinner>
-           
-        </div>
+    <mat-card class="card">
+       
         <div class="indicador">
-            Cortes
+            <h1>532</h1>
+            <p>Cortes</p>
         </div>
-    </div>
+    </mat-card>
 
-    <div class="card">
-        <div class="progress-chart">
-            <p>Porcentagem</p>
-            <mat-progress-spinner
-                class="example-margin"
-                color = "primary"
-                mode  = "determinate"
-                value = "90">
-            </mat-progress-spinner>
-        </div>
+    <mat-card class="card">
+      
         <div class="indicador">
-            Cortes
+            <h1>53</h1>
+            <p>Vinhos vendidos</p>
         </div>
-    </div>
+    </mat-card>
 
-    <div class="card">
+    <mat-card class="card">
+
+        <div class="indicador">
+            <h1>47</h1>
+            <p>Clientes novos</p>
+        </div>
+
+    </mat-card>
+
+    <mat-card class="card"> 
+
+        <div class="indicador">
+            <h1>312</h1>
+            <p>Agendamentos</p>
+        </div>
+
+    </mat-card>
+
+    <mat-card class="card">
 
         <div class="progress-chart">
             <p>Porcentagem</p>
@@ -83,7 +86,41 @@
             Cortes
         </div>
 
-    </div>
+    </mat-card>
+
+    <mat-card class="card">
+
+        <div class="progress-chart">
+            <p>Porcentagem</p>
+            <mat-progress-spinner
+            class="example-margin"
+            color = "primary"
+            mode  = "determinate"
+            value = "32">
+        </mat-progress-spinner>
+        </div>
+        <div class="indicador">
+            Cortes
+        </div>
+
+    </mat-card>
+
+    <mat-card class="card">
+
+        <div class="progress-chart">
+            <p>Porcentagem</p>
+            <mat-progress-spinner
+            class="example-margin"
+            color = "primary"
+            mode  = "determinate"
+            value = "32">
+        </mat-progress-spinner>
+        </div>
+        <div class="indicador">
+            Cortes
+        </div>
+
+    </mat-card>
 
 </div>
 
@@ -92,25 +129,20 @@
 
 <div class="container" style="height: 1000px;">
 
-    
-
     <div class="chartBar">
 
         <div class="bar-chart-container">
             <chart [type]="type1"  [data]="data1" [options]="options1" style="height: 300px ;"></chart>
         </div>
 
-     
-
-      
-
+        <div class="bar-chart-container">
+            <chart [type]="type2" [data]="data2" [options]="options2" style="height: 300px ;"></chart>
+        </div>
 
     </div>
 
     <div class="chartBar">
-        <div class="chart">
-            <chart [type]="type2" [data]="data2" [options]="options2"></chart>
-        </div>
+       
         <div class="chart">
             <chart [type]="type3" [data]="data3" [options]="options3"></chart>
         </div>
