@@ -5,11 +5,10 @@ div.flex-container{
     height: 100vh;
 }
 
-div.login-form{
+mat-card.login-form{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(24, 24, 24);
     height: 500px;
     width: 300px;
     border-radius: 10px;
@@ -23,7 +22,7 @@ div.login-form{
 }
 
 .logo{
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 div.logo{

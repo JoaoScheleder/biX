@@ -1,7 +1,7 @@
 
 .container{
     height: 100%;
-
+    margin-bottom: 16px;
 }
 .chartBar{
     margin: 0 auto;
@@ -9,7 +9,7 @@
     display: flex;
     justify-content: center;
     width: 90vw;
-    gap: 20px;
+    border-radius: 8px;
 }
 
 .chart{
@@ -19,45 +19,48 @@
 .bar-chart-container{
     display: flex;
     flex-direction: column;
-    flex: 1;;
+    flex: 1;
 }
 
 .filters-container{
+    width: 90vw;
+    margin: 0 auto;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     margin-top: 16px;
     flex-wrap: wrap;
     mat-form-field{
         width: 250px;
+        height: 40px;
+        margin-left: 12px; 
     }
 }
 
 div.painel-container{
     margin: 0 auto;
-    width: 90vw;
+    width: 92vw;
     height: fit-content;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 24px;
 }
 
 
 mat-card.card{
-    height: 150px;
-    width: 350px;
-    flex-shrink: 0;
+    flex: 1;
+    height: 80px;
     flex-wrap: nowrap;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    
+    justify-content: space-around;
+    border-radius: 8px;
     div.indicador{
         text-align: center;
         h1{
-            font-size: 2.5rem;
+            font-size: 2rem;
             margin: 0;
             margin-bottom: 5px;
         }
@@ -81,5 +84,23 @@ div.progress-chart{
         
         position: absolute;
 
+    }
+    mat-icon{
+        transform: scale(2);
+    }
+}
+
+
+div.charts{
+    margin: 0 auto;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 92vw;
+    border-radius: 8px;
+    gap: 24px;
+    margin-bottom: 16px;
+    mat-card.small-chart{
+        flex: 1;
     }
 }

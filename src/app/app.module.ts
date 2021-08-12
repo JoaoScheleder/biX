@@ -12,7 +12,6 @@ import { HomeComponent } from './pages/HomePage/home/home.component';
 import { NavbarComponent } from '../app/core/components/navbar/navbar.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
-import { ChartModule } from 'angular2-chartjs';
 import { ClientesComponent } from './pages/ClientePage/clientes/clientes.component';
 import { VendasComponent } from './pages/VendasPage/vendas/vendas.component';
 import { EstoqueComponent } from './pages/EstoquePage/estoque/estoque.component';
@@ -24,6 +23,10 @@ import {MatSelectModule} from '@angular/material/select';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatCardModule} from '@angular/material/card';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { HttpClientModule } from '@angular/common/http';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatMenu, MatMenuModule} from '@angular/material/menu';
 
 
 
@@ -47,14 +50,18 @@ import {MatCardModule} from '@angular/material/card';
     MatIconModule,
     MatToolbarModule,
     MatSidenavModule,
-    ChartModule,
     MatTableModule,
     MatProgressSpinnerModule,
     MatDatepickerModule,
     MatSelectModule,
     MatNativeDateModule,
     MatPaginatorModule,
-    MatCardModule
+    MatCardModule,
+    NgApexchartsModule,
+    HttpClientModule,
+    MatCheckboxModule,
+    MatMenuModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

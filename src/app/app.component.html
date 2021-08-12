@@ -1,4 +1,4 @@
-<div class="dark-theme-mode mat-app-background">
+<div class="mat-app-background">
 
   <app-navbar (toggleSidenavEvent) = "drawer.toggle()"></app-navbar>
 
@@ -11,8 +11,8 @@
     <mat-sidenav mode="over"  #drawer >
       <div class="flex-container">
         
-        <button mat-button routerLink = "dashboard"><mat-icon>dashboard</mat-icon>Dashboard</button>
-        <button mat-button routerLink = "clientes"><mat-icon>person</mat-icon>Clientes</button>
+        <button mat-button routerLink = "dashboard" (click) = 'drawer.toggle()'><mat-icon>dashboard</mat-icon>Dashboard</button>
+        <button mat-button routerLink = "clientes" (click) = 'drawer.toggle()'><mat-icon>person</mat-icon>Clientes</button>
         <button mat-button><mat-icon>attach_money</mat-icon>Vendas</button>
         <button mat-button><mat-icon>inventory_2</mat-icon>Estoque</button>
         <button mat-button><mat-icon>calendar_today</mat-icon>Agendamentos</button>
