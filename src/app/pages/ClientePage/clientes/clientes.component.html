@@ -1,22 +1,22 @@
+
+
+
 <div class="container">
-
+      
       <div class="table-and-stats">
-        <mat-card class="stats-container">
-
-        </mat-card>
-
         <div>
           <div class="flex-row">
+
+            <div class="buttons">
+              <button mat-button class="create">Cadastrar</button>
+              <button mat-button class="delete">Deletar</button>
+    
+            </div>
+
             <mat-form-field appearance="standard">
                 <mat-label>Buscar</mat-label>
                 <input matInput (keyup)="applyFilter($event)" #input>
               </mat-form-field>
-      
-              <div class="buttons">
-                <button mat-button class="create">Cadastrar</button>
-                <button mat-button class="delete">Deletar</button>
-      
-              </div>
       
           </div>
           <div class="tableContainer">
@@ -92,7 +92,25 @@
           </div>
           <mat-paginator [pageSizeOptions]="[15, 25, 100]"></mat-paginator>
 
+        </div>  
+
+        <div class="indicatorsContainer">
+          
+          <div>
+  
+            <mat-card >A</mat-card>
+            <mat-card >B</mat-card>
+            <mat-card >C</mat-card>
+          
+          </div>
+  
+          <mat-card class="stats-container">
+  
+          </mat-card>
+
         </div>
+
+        
       </div>
 
 

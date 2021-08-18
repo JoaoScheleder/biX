@@ -1,9 +1,21 @@
 <mat-toolbar>
 
+  <div>
+
     <button mat-icon-button (click) = "toggleSideNav()">
      <mat-icon  >menu</mat-icon>
-   </button>
+    </button>
+
    <span style="font-family: 'Lobster Two', cursive;">Barbearia Estilo</span>
-  
+
+  </div>
+   
+   <div>
+
+     <button mat-icon-button matTooltip="Tela cheia"(click)="openFullscreen()" >
+      <mat-icon >{{fullscreenIcon}}</mat-icon>
+    </button>
+   
+  </div>
   
  </mat-toolbar>

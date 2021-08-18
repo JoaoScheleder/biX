@@ -1,4 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -8,15 +9,27 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class NavbarComponent implements OnInit {
 
   @Output() toggleSidenavEvent: EventEmitter<any> = new EventEmitter();
+  fullscreenIcon : string = "fullscreen"
+  private elem! : HTMLElement;
 
-  constructor() { }
+  constructor(@Inject(DOCUMENT) private document: any ) { }
 
   ngOnInit(): void {
-    
+    this.elem = document.documentElement
   }
 
   toggleSideNav() : void{
     this.toggleSidenavEvent.emit()
   }
 
+  openFullscreen() {
+    this.fullscreenIcon = this.fullscreenIcon == "fullscreen"? "close_fullscreen":"fullscreen"
+    if (this.elem.requestFullscreen) {
+      this.elem.requestFullscreen();
+    }
+    if (this.document.exitFullscreen) {
+      this.document.exitFullscreen();
+   }
+
+  }
 }

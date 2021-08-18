@@ -6,17 +6,16 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Cliente } from '../model/cliente';
 import { SelectionModel } from '@angular/cdk/collections';
 
-
 @Component({
   selector: 'app-clientes',
   templateUrl: './clientes.component.html',
   styleUrls: ['./clientes.component.scss']
 })
 export class ClientesComponent implements OnInit {
-
+  
+  displayedColumns: string[] = ['Checkbox','id' ,'nome','telefone','cadastro','opcoes'];
   arrayDeClientes : Cliente[] = []
   selection = new SelectionModel<Cliente>(true, []);
-  displayedColumns: string[] = ['Checkbox','id' ,'nome','telefone','cadastro','vinho','opcoes'];
   dataSource! : MatTableDataSource<Cliente>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -34,7 +33,6 @@ export class ClientesComponent implements OnInit {
       this.dataSource.sort = this.sort;
     })
   }
-
 
   applyFilter(event: Event) {
 

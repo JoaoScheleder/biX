@@ -1,158 +1,158 @@
 
-<div class="filters-container">
-    <div>
-        <mat-form-field appearance="fill">
-            <mat-label>Data incial</mat-label>
-            <input matInput [matDatepicker]="picker">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
+    <div class="filters-container">
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Data incial</mat-label>
+                <input matInput [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+           
+              <mat-form-field appearance="fill">
+                <mat-label>Data final</mat-label>
+                <input matInput [matDatepicker]="picker2">
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+              </mat-form-field>
+        </div>
+        
+        <div>
+    
+            <p style="margin: 0;font-size: 1rem;">Home/<span style="color: rgba(33, 150, 243, 1);">Dashboard</span></p>
+    
+        </div>
+    
        
-          <mat-form-field appearance="fill">
-            <mat-label>Data final</mat-label>
-            <input matInput [matDatepicker]="picker2">
-            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-            <mat-datepicker #picker2></mat-datepicker>
-          </mat-form-field>
     </div>
     
-    <div>
-
-        <p style="margin: 0;font-size: 1rem;">Home/<span style="color: rgba(33, 150, 243, 1);">Dashboard</span></p>
-
+    
+    <div class="container">
+    
+        <mat-card class="chartBar">
+    
+            <div class="bar-chart-container">
+                <apx-chart
+                    [series]="chartOptions.series"
+                    [chart]="chartOptions.chart"
+                    [xaxis]="chartOptions.xaxis"
+                    [stroke]="chartOptions.stroke"
+                    [colors]="chartOptions.colors"
+                    [dataLabels]="chartOptions.dataLabels"
+                    [legend]="chartOptions.legend"
+                    [markers]="chartOptions.markers"
+                    [grid]="chartOptions.grid"
+                    [yaxis]="chartOptions.yaxis"
+                    [title]="chartOptions.title"
+                    [theme] = "theme"
+                    ></apx-chart>
+            </div>
+    
+    
+        </mat-card>
+    
     </div>
-
-   
-</div>
-
-
-<div class="container">
-
-    <mat-card class="chartBar">
-
-        <div class="bar-chart-container">
+    
+    <div class="painel-container">
+    
+        <!-- <mat-card class="card">
+           
+            <div class="indicador">
+                <h1>532</h1>
+                <p>Cortes</p>
+            </div>
+        </mat-card> -->
+    
+        <mat-card class="card">
+    
+            <div class="progress-chart">
+                <mat-icon>content_cut</mat-icon>
+            </div>
+            <div class="indicador">
+                <p>Cortes</p>
+                <h1>532</h1>
+            </div>
+    
+        </mat-card>
+    
+        <mat-card class="card">
+    
+            <div class="progress-chart">
+                <mat-icon>attach_money</mat-icon>
+            </div>
+            <div class="indicador">
+                <p>Lucro</p>
+                <h1>{{ 14672.5 | currency:'BRL'}}</h1>
+    
+            </div>
+    
+        </mat-card>
+    
+        <mat-card class="card">
+    
+            <div class="progress-chart">
+                <mat-icon>person</mat-icon>
+            </div>
+            <div class="indicador">
+                <p>Clientes Novos</p>
+                <h1>32</h1>
+            </div>
+    
+        </mat-card>
+    
+        <mat-card class="card">
+    
+            <div class="progress-chart">
+                <mat-icon>liquor</mat-icon>
+            </div>
+            <div class="indicador">
+                <p>Vinhos Vendido</p>
+                <h1>27</h1>
+            </div>
+    
+        </mat-card>
+    
+    </div>
+    
+    <div class="charts">
+        <mat-card class="small-chart">
             <apx-chart
-                [series]="chartOptions.series"
-                [chart]="chartOptions.chart"
-                [xaxis]="chartOptions.xaxis"
-                [stroke]="chartOptions.stroke"
-                [colors]="chartOptions.colors"
-                [dataLabels]="chartOptions.dataLabels"
-                [legend]="chartOptions.legend"
-                [markers]="chartOptions.markers"
-                [grid]="chartOptions.grid"
-                [yaxis]="chartOptions.yaxis"
-                [title]="chartOptions.title"
-                [theme] = "theme"
-                ></apx-chart>
-        </div>
-
-
-    </mat-card>
-
-</div>
-
-<div class="painel-container">
-
-    <!-- <mat-card class="card">
-       
-        <div class="indicador">
-            <h1>532</h1>
-            <p>Cortes</p>
-        </div>
-    </mat-card> -->
-
-    <mat-card class="card">
-
-        <div class="progress-chart">
-            <mat-icon>content_cut</mat-icon>
-        </div>
-        <div class="indicador">
-            <p>Cortes</p>
-            <h1>532</h1>
-        </div>
-
-    </mat-card>
-
-    <mat-card class="card">
-
-        <div class="progress-chart">
-            <mat-icon>attach_money</mat-icon>
-        </div>
-        <div class="indicador">
-            <p>Lucro</p>
-            <h1>{{ 14672.5 | currency:'BRL'}}</h1>
-
-        </div>
-
-    </mat-card>
-
-    <mat-card class="card">
-
-        <div class="progress-chart">
-            <mat-icon>person</mat-icon>
-        </div>
-        <div class="indicador">
-            <p>Clientes Novos</p>
-            <h1>32</h1>
-        </div>
-
-    </mat-card>
-
-    <mat-card class="card">
-
-        <div class="progress-chart">
-            <mat-icon>liquor</mat-icon>
-        </div>
-        <div class="indicador">
-            <p>Vinhos Vendido</p>
-            <h1>27</h1>
-        </div>
-
-    </mat-card>
-
-</div>
-
-<div class="charts">
-    <mat-card class="small-chart">
-        <apx-chart
-        [series]="series2"
-        [chart]="chart2"
-        [dataLabels]="dataLabels2"
-        [markers]="markers2"
-        [title]="title2"
-        [fill]="fill2"
-        [yaxis]="yaxis2"
-        [xaxis]="xaxis2"
-        [tooltip]="tooltip2"
-        [autoUpdateSeries]="true"
-        [grid] = "grid"
-        ></apx-chart>
-    </mat-card>
-    <mat-card class="small-chart">
-        <apx-chart
-        [series]="chartOptions2.series"
-        [chart]="chartOptions2.chart"
-        [labels]="chartOptions2.labels"
-        [responsive]="chartOptions2.responsive"
-      ></apx-chart>
-    </mat-card>
-    <mat-card class="small-chart">
-        <apx-chart
-        [series]="chartOptions3.series"
-        [chart]="chartOptions3.chart"
-        [dataLabels]="chartOptions3.dataLabels"
-        [plotOptions]="chartOptions3.plotOptions"
-        [yaxis]="chartOptions3.yaxis"
-        [legend]="chartOptions3.legend"
-        [fill]="chartOptions3.fill"
-        [stroke]="chartOptions3.stroke"
-        [tooltip]="chartOptions3.tooltip"
-        [xaxis]="chartOptions3.xaxis"
-        [grid] = "chartOptions3.grid"
-        ></apx-chart>
-    </mat-card>
-</div>
-
+            [series]="series2"
+            [chart]="chart2"
+            [dataLabels]="dataLabels2"
+            [markers]="markers2"
+            [title]="title2"
+            [fill]="fill2"
+            [yaxis]="yaxis2"
+            [xaxis]="xaxis2"
+            [tooltip]="tooltip2"
+            [autoUpdateSeries]="true"
+            [grid] = "grid"
+            ></apx-chart>
+        </mat-card>
+        <mat-card class="small-chart">
+            <apx-chart
+            [series]="chartOptions2.series"
+            [chart]="chartOptions2.chart"
+            [labels]="chartOptions2.labels"
+            [responsive]="chartOptions2.responsive"
+          ></apx-chart>
+        </mat-card>
+        <mat-card class="small-chart">
+            <apx-chart
+            [series]="chartOptions3.series"
+            [chart]="chartOptions3.chart"
+            [dataLabels]="chartOptions3.dataLabels"
+            [plotOptions]="chartOptions3.plotOptions"
+            [yaxis]="chartOptions3.yaxis"
+            [legend]="chartOptions3.legend"
+            [fill]="chartOptions3.fill"
+            [stroke]="chartOptions3.stroke"
+            [tooltip]="chartOptions3.tooltip"
+            [xaxis]="chartOptions3.xaxis"
+            [grid] = "chartOptions3.grid"
+            ></apx-chart>
+        </mat-card>
+    </div>
+    
 
 

@@ -41,9 +41,9 @@ div.container{
     align-items: center;
     width: 100vw;
     gap: 32px;
-    mat-card{
+    .stats-container{
       width: 900px;
-      height: 840px;
+      height: 690px;
     }
     table{
       width: 900px;
@@ -60,9 +60,30 @@ div.container{
     overflow-x: hidden;
     height: 768px;
     background-color: white;
-
+    
   }
 
   .mat-header-row, .mat-row {
     min-height: 30px;
   }
+
+  div.indicatorsContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    div{
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: 16px;
+
+      mat-card{
+        flex: 1;
+        height: 100px;
+      }
+    }
+
+  }
+
+
+  
