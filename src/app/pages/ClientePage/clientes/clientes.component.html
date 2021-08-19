@@ -105,7 +105,12 @@
           </div>
   
           <mat-card class="stats-container">
-  
+              <apx-chart
+              [series]="chartOptions.series"
+              [chart]="chartOptions.chart"
+              [xaxis]="chartOptions.xaxis"
+              [title]="chartOptions.title"
+            ></apx-chart>
           </mat-card>
 
         </div>

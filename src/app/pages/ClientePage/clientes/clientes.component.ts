@@ -6,6 +6,20 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Cliente } from '../model/cliente';
 import { SelectionModel } from '@angular/cdk/collections';
 
+import {
+  ChartComponent,
+  ApexAxisChartSeries,
+  ApexChart,
+  ApexXAxis,
+  ApexTitleSubtitle
+} from "ng-apexcharts";
+
+export type ChartOptions = {
+  series: ApexAxisChartSeries;
+  chart: ApexChart;
+  xaxis: ApexXAxis;
+  title: ApexTitleSubtitle;
+};
 @Component({
   selector: 'app-clientes',
   templateUrl: './clientes.component.html',
@@ -21,7 +35,29 @@ export class ClientesComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private clienteService : ClienteService) {}
+  public chartOptions!: Partial<ChartOptions> | any;
+  constructor(private clienteService : ClienteService) {
+
+    this.chartOptions = {
+      series: [
+        {
+          name: "Clientes Cadastrados",
+          data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+        }
+      ],
+      chart: {
+        height: 650,
+        type: "bar"
+      },
+      title: {
+        text: "Novos Clientes"
+      },
+      xaxis: {
+        categories: ["Jan", "Fev",  "Mar",  "Abr",  "Mai",  "Jun",  "Jul",  "Ago", "Set"]
+      }
+    };
+
+  }
 
   ngOnInit(){
     
