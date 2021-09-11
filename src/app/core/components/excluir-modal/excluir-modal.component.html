@@ -1,0 +1,16 @@
+
+<div style="display:flex;flex-direction: column; align-items: center; justify-content: center;">
+
+    
+    <div mat-dialog-content>
+        <p mat-dialog-title style="font-weight: lighter;">Tem certeza que deseja excluir?</p>
+
+           
+        <div style="display: flex; gap: 8px; width: 100%;justify-content: flex-end;">
+            <button mat-button (click)="onNoClick()" >Cancelar</button>
+            <button mat-raised-button color="warn" [mat-dialog-close]="true">Excluir</button>
+        </div>
+    </div>
+    
+
+</div>

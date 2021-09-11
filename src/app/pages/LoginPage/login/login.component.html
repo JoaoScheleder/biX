@@ -1,5 +1,5 @@
 <div class="flex-container">
-
+    <div style="flex: 1;"></div>
     <mat-card class="login-form">
         <div class="image-container">
             <img src="">
@@ -8,8 +8,8 @@
         <div class="form-inputs">
 
             <div class="logo">
-                <mat-icon>content_cut</mat-icon>
-                <h1>Barbearia Estilo</h1>
+                <h1>Fortune</h1>
+                <p>Gestão empresarial</p>
             </div>
 
 
@@ -23,7 +23,7 @@
                 <input matInput placeholder="Senha" type="password">
             </mat-form-field>
 
-            <button mat-raised-button color="accent" routerLink = "/dashboard">Entrar</button>
+            <button mat-raised-button color="accent" (click) = "doLogin()" routerLink = "/fortune/dashboard">Entrar</button>
 
         </div>
 

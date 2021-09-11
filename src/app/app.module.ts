@@ -12,7 +12,7 @@ import { HomeComponent } from './pages/HomePage/home/home.component';
 import { NavbarComponent } from '../app/core/components/navbar/navbar.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
-import { ClientesComponent } from './pages/ClientePage/clientes/clientes.component';
+import { ClientesComponent, CreateClienteDialog} from './pages/ClientePage/clientes/clientes.component';
 import { VendasComponent } from './pages/VendasPage/vendas/vendas.component';
 import { EstoqueComponent } from './pages/EstoquePage/estoque/estoque.component';
 import { AgendamentosComponent } from './pages/AgendamentosPage/agendamentos/agendamentos.component'
@@ -26,7 +26,11 @@ import {MatCardModule} from '@angular/material/card';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { HttpClientModule } from '@angular/common/http';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatMenu, MatMenuModule} from '@angular/material/menu';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { FormsModule }   from '@angular/forms';
+import { ExcluirModalComponent } from './core/components/excluir-modal/excluir-modal.component';
 
 
 
@@ -40,6 +44,8 @@ import {MatMenu, MatMenuModule} from '@angular/material/menu';
     VendasComponent,
     EstoqueComponent,
     AgendamentosComponent,
+    CreateClienteDialog,
+    ExcluirModalComponent
   ],
   imports: [
     BrowserModule,
@@ -60,8 +66,10 @@ import {MatMenu, MatMenuModule} from '@angular/material/menu';
     NgApexchartsModule,
     HttpClientModule,
     MatCheckboxModule,
-    MatMenuModule
-
+    MatMenuModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

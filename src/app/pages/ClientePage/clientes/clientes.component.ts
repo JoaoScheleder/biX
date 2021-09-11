@@ -2,17 +2,22 @@ import { ClienteService } from './../service/cliente.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { Cliente } from '../model/cliente';
 import { SelectionModel } from '@angular/cdk/collections';
+import {Inject} from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+
 
 import {
-  ChartComponent,
+
   ApexAxisChartSeries,
   ApexChart,
   ApexXAxis,
   ApexTitleSubtitle
 } from "ng-apexcharts";
+import { DateAdapter } from '@angular/material/core';
+import { ExcluirModalComponent } from 'src/app/core/components/excluir-modal/excluir-modal.component';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -27,16 +32,20 @@ export type ChartOptions = {
 })
 export class ClientesComponent implements OnInit {
   
-  displayedColumns: string[] = ['Checkbox','id' ,'nome','telefone','cadastro','opcoes'];
+  displayedColumns: string[] = ['Checkbox','id' ,'nome','telefone','email','cadastro','opcoes'];
   arrayDeClientes : Cliente[] = []
   selection = new SelectionModel<Cliente>(true, []);
   dataSource! : MatTableDataSource<Cliente>;
+  cliente! : Cliente
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
+  @ViewChild(MatTable) table! : MatTable<any>;
+
+
   public chartOptions!: Partial<ChartOptions> | any;
-  constructor(private clienteService : ClienteService) {
+  constructor(private clienteService : ClienteService , public dialog: MatDialog) {
 
     this.chartOptions = {
       series: [
@@ -59,8 +68,12 @@ export class ClientesComponent implements OnInit {
 
   }
 
-  ngOnInit(){
-    
+  ngOnInit(){ 
+    this.getClientesData()
+  }
+
+
+  getClientesData() : void { 
     this.clienteService.getClientes().subscribe((result)=>{
       this.arrayDeClientes = result.data
       this.dataSource = new MatTableDataSource<Cliente>(this.arrayDeClientes);
@@ -103,6 +116,71 @@ export class ClientesComponent implements OnInit {
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.idPais as number + 1}`;
   }
- 
+
+  cadastrarCliente() : void{
+    const dialogRef = this.dialog.open(CreateClienteDialog, {
+      width: '500px',
+      data: {
+        cliente_nome: '',
+        cliente_email: '',
+        cliente_telefone: '',
+        cliente_datacadastrado : ''
+      }
+
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.cliente = result;
+      this.cliente.cliente_datacadastrado = result.cliente_datacadastrado.toLocaleString().substr(0,10).split('/').reverse().join('-')
+      console.log(this.cliente)
+
+      this.clienteService.createCliente(this.cliente).subscribe((resultado)=>{
+
+        console.log("Cliente cadastrado com sucesso")
+        this.getClientesData()
+        console.log(this.table)
+
+      }
+      )
+    });
+  }
+
+
+  excluirCliente(idCliente: number) : void {
+    const dialogExcluirRef = this.dialog.open(ExcluirModalComponent)
+
+
+    dialogExcluirRef.afterClosed().subscribe(result =>{
+      if(result){
+        this.clienteService.deleteCliente(idCliente.toString()).subscribe(data => {
+         
+          this.getClientesData()
+          
+        },
+        error =>{
+            console.log(error)
+        })
+      }
+    })
+  }
 }
 
+@Component({
+  selector: 'create-cliente-dialog',
+  templateUrl: '../dialogs/createCliente-dialog.html'
+})
+export class CreateClienteDialog {
+  
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Cliente, private dateAdapter : DateAdapter<Date>,
+  public dialogRef : MatDialogRef<ClientesComponent>
+  ) {
+
+    this.dateAdapter.setLocale("pt-BR")
+
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+}

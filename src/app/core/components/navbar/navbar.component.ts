@@ -1,5 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,10 +13,13 @@ export class NavbarComponent implements OnInit {
   fullscreenIcon : string = "fullscreen"
   private elem! : HTMLElement;
 
-  constructor(@Inject(DOCUMENT) private document: any ) { }
+
+
+  constructor(@Inject(DOCUMENT) private document: any,private loginService : LoginService ) { }
 
   ngOnInit(): void {
     this.elem = document.documentElement
+ 
   }
 
   toggleSideNav() : void{

@@ -22,6 +22,20 @@ body {
 @include mat-core();
 
 
+
+$my-primary: mat-palette($mat-indigo);
+$my-accent: mat-palette($mat-blue);
+
+// The "warn" palette is optional and defaults to red if not specified.
+$my-warn: mat-palette($mat-red);
+
+
+$light-theme : mat-light-theme($my-primary,$my-accent,$my-warn);
+
+.light-theme-mode{
+    @include angular-material-theme($light-theme)
+}
+
 $market-primary-dark: mat-palette($mat-blue);
 $market-accent-dark: mat-palette($mat-blue-grey);
 $market-warn-dark: mat-palette($mat-red);

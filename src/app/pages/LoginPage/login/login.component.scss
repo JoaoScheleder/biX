@@ -1,24 +1,23 @@
 div.flex-container{
     display: flex;
     align-items: center;
-    justify-content: center;
     height: 100vh;
+    overflow: hidden;
 }
 
 mat-card.login-form{
+    width: 400px;
+    border-radius: 10px;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 500px;
-    width: 300px;
-    border-radius: 10px;
 }
 
 .form-inputs{
     display: flex;
     flex-direction: column;
     gap: 20px;
-
 }
 
 .logo{
@@ -32,4 +31,6 @@ div.logo{
 div.logo h1{
     font-family: 'Lobster Two', cursive;
     font-weight: bold;
+    font-size: 2rem;
+    letter-spacing: 2px;
 }

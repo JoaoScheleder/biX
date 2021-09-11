@@ -6,6 +6,8 @@ import { HomeComponent } from './pages/HomePage/home/home.component';
 import { LoginComponent } from './pages/LoginPage/login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginGuard } from './core/guards/login.guard';
+import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -15,28 +17,42 @@ const routes: Routes = [
   },
   {
     path: "login",
-    component: LoginComponent
+    component: LoginComponent,
+    canActivate : [LoginGuard]
   },
   {
-    path: "dashboard",
-    component : HomeComponent
+    path: "fortune",
+    canActivate : [AuthGuard],
+    canActivateChild : [AuthGuard],
+    children: [
+      {
+        path : "",
+        redirectTo : "fortune/dashboards",
+        pathMatch : "full"
+      },
+      {
+        path: "dashboard",
+        component : HomeComponent
+      },
+      {
+        path: "clientes",
+        component : ClientesComponent
+      },
+      {
+        path: "vendas",
+        component : VendasComponent
+      },
+      {
+        path: "estoque",
+        component : EstoqueComponent
+      },
+      {
+        path: "agendamentos",
+        component : AgendamentosComponent
+      }
+    ]
   },
-  {
-    path: "clientes",
-    component : ClientesComponent
-  },
-  {
-    path: "vendas",
-    component : VendasComponent
-  },
-  {
-    path: "estoque",
-    component : EstoqueComponent
-  },
-  {
-    path: "agendamentos",
-    component : AgendamentosComponent
-  }
+  
 
 
 ];
