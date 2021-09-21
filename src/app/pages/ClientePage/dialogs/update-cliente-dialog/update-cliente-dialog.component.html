@@ -30,7 +30,7 @@
         <div >
             <mat-form-field appearance="fill"  style="width: 220px;">
                 <mat-label>Data de Cadastro</mat-label>
-                <input matInput [matDatepicker]="datacadastro"  [(ngModel)] = data.cliente_datacadastrado>
+                <input matInput [matDatepicker]="datacadastro" [(ngModel)] = dataDeCadastro>
                 <mat-datepicker-toggle matSuffix [for]="datacadastro"></mat-datepicker-toggle>
                 <mat-datepicker #datacadastro></mat-datepicker>
             </mat-form-field>
@@ -38,8 +38,8 @@
         </div>
            
         <div style="display: flex; gap: 8px; width: 220px;justify-content: center;">
-            <button mat-raised-button color="primary" [mat-dialog-close]="data">Cadastrar</button>
-            <button mat-raised-button color="warn" (click)="onNoClick()" >Cancelar</button>
+            <button mat-raised-button color="primary" [mat-dialog-close]="data" (click) = "changeDate()">Atualizar</button>
+            <button mat-button (click)="onNoClick()" >Cancelar</button>
         </div>
     </div>
     

@@ -74,7 +74,7 @@
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>Opções</th>
                 <td mat-cell *matCellDef="let row">
                   <div style="display: flex;">
-                    <button mat-icon-button><mat-icon>edit</mat-icon></button>
+                    <button mat-icon-button (click) = "atualizarCliente(row.cliente_id)"><mat-icon>edit</mat-icon></button>
                     <button mat-icon-button (click) = "excluirCliente(row.cliente_id)"><mat-icon>delete</mat-icon></button>
     
                   </div>

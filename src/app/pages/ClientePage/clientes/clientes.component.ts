@@ -18,6 +18,8 @@ import {
 } from "ng-apexcharts";
 import { DateAdapter } from '@angular/material/core';
 import { ExcluirModalComponent } from 'src/app/core/components/excluir-modal/excluir-modal.component';
+import { UpdateClienteDialogComponent } from '../dialogs/update-cliente-dialog/update-cliente-dialog.component';
+import { FormControl } from '@angular/forms';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -40,38 +42,47 @@ export class ClientesComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-
   @ViewChild(MatTable) table! : MatTable<any>;
 
 
   public chartOptions!: Partial<ChartOptions> | any;
-  constructor(private clienteService : ClienteService , public dialog: MatDialog) {
-
-    this.chartOptions = {
-      series: [
-        {
-          name: "Clientes Cadastrados",
-          data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
-        }
-      ],
-      chart: {
-        height: 650,
-        type: "bar"
-      },
-      title: {
-        text: "Novos Clientes"
-      },
-      xaxis: {
-        categories: ["Jan", "Fev",  "Mar",  "Abr",  "Mai",  "Jun",  "Jul",  "Ago", "Set"]
-      }
-    };
-
-  }
+  constructor(private clienteService : ClienteService , public dialog: MatDialog) {}
 
   ngOnInit(){ 
     this.getClientesData()
+    this.getClientesMes()
   }
+  
+  getClientesMes() : void{
+    this.clienteService.getClientesPorMes('2021').subscribe(dados =>{
 
+      let mesesDisponiveis = dados.data.map((element: { mes: string; }) => {
+        return element.mes
+      });
+      let totalPorMes = dados.data.map((element: { total: number; }) => {
+        return element.total
+      });
+
+      this.chartOptions = {
+        series: [
+          {
+            name: "Clientes Cadastrados",
+            data: totalPorMes
+          }
+        ],
+        chart: {
+          height: 650,
+          type: "bar"
+        },
+        title: {
+          text: "Novos Clientes"
+        },
+        xaxis: {
+          categories: mesesDisponiveis
+        }
+      };
+    })
+  }
 
   getClientesData() : void { 
     this.clienteService.getClientes().subscribe((result)=>{
@@ -84,7 +95,6 @@ export class ClientesComponent implements OnInit {
   }
 
   applyFilter(event: Event) {
-
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
@@ -132,31 +142,64 @@ export class ClientesComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       this.cliente = result;
+      console.log(result)
+
       this.cliente.cliente_datacadastrado = result.cliente_datacadastrado.toLocaleString().substr(0,10).split('/').reverse().join('-')
-      console.log(this.cliente)
 
       this.clienteService.createCliente(this.cliente).subscribe((resultado)=>{
 
         console.log("Cliente cadastrado com sucesso")
         this.getClientesData()
-        console.log(this.table)
-
+        this.getClientesMes()
       }
       )
     });
   }
 
+   atualizarCliente(idCliente: number) : void {
 
-  excluirCliente(idCliente: number) : void {
+    let clienteParaAtualizar = this.arrayDeClientes.find((client)=>{return client.cliente_id === idCliente})
+
+    const dialogAtualizarRef = this.dialog.open(UpdateClienteDialogComponent,{
+      data : {
+        'cliente_nome' : clienteParaAtualizar!.cliente_nome,
+        'cliente_telefone' : clienteParaAtualizar!.cliente_telefone,
+        'cliente_email':  clienteParaAtualizar!.cliente_email,
+        'cliente_datacadastrado' : clienteParaAtualizar!.cliente_datacadastrado
+      }
+    })
+
+
+    dialogAtualizarRef.afterClosed().subscribe(result =>{
+
+      clienteParaAtualizar = result
+
+      if(result && clienteParaAtualizar){
+
+        this.clienteService.updateCliente(clienteParaAtualizar,idCliente.toString()).subscribe(data => {
+         
+          this.getClientesData()
+          this.getClientesMes()
+        },
+        error =>{
+            console.log(error)
+        })
+      }
+    })
+  }
+
+  excluirCliente(idCliente: number) : void{
     const dialogExcluirRef = this.dialog.open(ExcluirModalComponent)
 
 
     dialogExcluirRef.afterClosed().subscribe(result =>{
       if(result){
         this.clienteService.deleteCliente(idCliente.toString()).subscribe(data => {
-         
-          this.getClientesData()
           
+          console.log(data)
+          this.getClientesData()
+          this.getClientesMes()
+
         },
         error =>{
             console.log(error)
@@ -175,12 +218,13 @@ export class CreateClienteDialog {
   constructor(@Inject(MAT_DIALOG_DATA) public data: Cliente, private dateAdapter : DateAdapter<Date>,
   public dialogRef : MatDialogRef<ClientesComponent>
   ) {
-
     this.dateAdapter.setLocale("pt-BR")
-
   }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 }
+
+
+

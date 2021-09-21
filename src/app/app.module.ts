@@ -31,6 +31,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule }   from '@angular/forms';
 import { ExcluirModalComponent } from './core/components/excluir-modal/excluir-modal.component';
+import { UpdateClienteDialogComponent } from './pages/ClientePage/dialogs/update-cliente-dialog/update-cliente-dialog.component';
 
 
 
@@ -45,7 +46,8 @@ import { ExcluirModalComponent } from './core/components/excluir-modal/excluir-m
     EstoqueComponent,
     AgendamentosComponent,
     CreateClienteDialog,
-    ExcluirModalComponent
+    ExcluirModalComponent,
+    UpdateClienteDialogComponent
   ],
   imports: [
     BrowserModule,
