@@ -16,6 +16,17 @@ body {
 
 }   
 
+.errorSnackBar{
+    background-color: rgb(255, 58, 8);
+    color: white;
+    font-weight: bold;
+  }
+
+  .sucessSnackBar{
+    background-color: rgb(21, 189, 21);
+    color: white;
+  }
+
 
 @import "~@angular/material/theming";
 

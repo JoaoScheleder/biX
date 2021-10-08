@@ -1,0 +1,47 @@
+
+<div style="display:flex;flex-direction: column; align-items: center; justify-content: center;">
+
+    
+    <div mat-dialog-content>
+        <h1 mat-dialog-title>Cadastro de Cliente</h1>
+
+        <div>
+            <mat-form-field appearance="fill" style="width: 220px;">
+              <mat-label>Nome do cliente</mat-label>
+              <input matInput placeholder="Cliente" [(ngModel)]="data.cliente_nome">
+            </mat-form-field>
+        </div>
+    
+        <div  > 
+            <mat-form-field appearance="fill" style="width: 220px;">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Email" [(ngModel)]="data.cliente_email">
+            </mat-form-field>
+        </div>
+    
+        <div  style="width: 250px;">
+            <mat-form-field appearance="fill" style="width: 220px;">
+                <mat-label>Celular</mat-label>
+                <input matInput placeholder="Celular" [(ngModel)]="data.cliente_telefone">
+            </mat-form-field>
+        </div>
+    
+
+        <div >
+            <mat-form-field appearance="fill"  style="width: 220px;">
+                <mat-label>Data de Cadastro</mat-label>
+                <input matInput [matDatepicker]="datacadastro"  [(ngModel)] = data.cliente_datacadastrado>
+                <mat-datepicker-toggle matSuffix [for]="datacadastro"></mat-datepicker-toggle>
+                <mat-datepicker #datacadastro></mat-datepicker>
+            </mat-form-field>
+
+        </div>
+           
+        <div style="display: flex; gap: 8px; width: 220px;justify-content: center;">
+            <button mat-raised-button color="primary" [mat-dialog-close]="data">Cadastrar</button>
+            <button mat-raised-button color="warn" (click)="onNoClick()" >Cancelar</button>
+        </div>
+    </div>
+    
+
+</div>

@@ -12,7 +12,7 @@ import { HomeComponent } from './pages/HomePage/home/home.component';
 import { NavbarComponent } from '../app/core/components/navbar/navbar.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
-import { ClientesComponent, CreateClienteDialog} from './pages/ClientePage/clientes/clientes.component';
+import { ClientesComponent} from './pages/ClientePage/clientes/clientes.component';
 import { VendasComponent } from './pages/VendasPage/vendas/vendas.component';
 import { EstoqueComponent } from './pages/EstoquePage/estoque/estoque.component';
 import { AgendamentosComponent } from './pages/AgendamentosPage/agendamentos/agendamentos.component'
@@ -32,6 +32,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule }   from '@angular/forms';
 import { ExcluirModalComponent } from './core/components/excluir-modal/excluir-modal.component';
 import { UpdateClienteDialogComponent } from './pages/ClientePage/dialogs/update-cliente-dialog/update-cliente-dialog.component';
+import { BixTableComponent } from './shared/bix-table/bix-table.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { UpdateProdutoDialogComponent } from './pages/EstoquePage/dialogs/update-produto-dialog/update-produto-dialog.component';
+import { CreateProdutoDialogComponent } from './pages/EstoquePage/dialogs/create-produto-dialog/create-produto-dialog.component';
+import { CreateClienteDialogComponent } from './pages/ClientePage/dialogs/create-cliente-dialog/create-cliente-dialog.component';
 
 
 
@@ -45,9 +50,12 @@ import { UpdateClienteDialogComponent } from './pages/ClientePage/dialogs/update
     VendasComponent,
     EstoqueComponent,
     AgendamentosComponent,
-    CreateClienteDialog,
     ExcluirModalComponent,
-    UpdateClienteDialogComponent
+    UpdateClienteDialogComponent,
+    BixTableComponent,
+    UpdateProdutoDialogComponent,
+    CreateProdutoDialogComponent,
+    CreateClienteDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +79,8 @@ import { UpdateClienteDialogComponent } from './pages/ClientePage/dialogs/update
     MatMenuModule,
     MatDialogModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

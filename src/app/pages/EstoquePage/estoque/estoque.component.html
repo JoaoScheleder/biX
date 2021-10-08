@@ -1,1 +1,48 @@
-<p>estoque works!</p>
+
+
+
+<div class="container">
+      
+    <div class="table-and-stats">
+      
+      <app-bix-table
+        [arrayDeDados] = 'arrayDeProdutos'
+        [displayedColumns] = 'displayedColumns'
+        [dataSource] = 'dataSource'
+        [filterFields] = "filterFields"
+        (eventoAtualizar) = 'atualizarProduto($event)'
+        (eventoCadastrar) = 'cadastrarProduto()'
+        (eventoExcluir) = 'excluirProduto($event)'
+        (eventoExcluirMultiplos) = 'excluirMultiplos($event)'
+
+        ></app-bix-table>
+
+      <div class="indicatorsContainer">
+        
+        <div>
+
+          <mat-card >A</mat-card>
+          <mat-card >B</mat-card>
+          <mat-card >C</mat-card>
+        
+        </div>
+
+        <mat-card class="stats-container">
+            <apx-chart
+            [series]="chartOptions.series"
+            [chart]="chartOptions.chart"
+            [xaxis]="chartOptions.xaxis"
+            [title]="chartOptions.title"
+          ></apx-chart>
+        </mat-card>
+
+      </div>
+
+      
+    </div>
+
+
+</div>
+
+
+

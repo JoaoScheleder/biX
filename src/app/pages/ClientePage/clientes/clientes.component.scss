@@ -7,32 +7,8 @@ div.container{
     overflow-x: hidden;
 }
   
-  .mat-form-field {
-    font-size: 14px;
-    flex: 1;
-  }
-  
-  .flex-row{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0 auto;
-    height: 35px;
-    margin-bottom: 12px;
-    gap: 16px;
-    .buttons{
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: rgb(245, 245, 245);
-    }
-    .delete{
-      background-color: rgb(211, 61, 61);
-    }
-    .create{
-      background-color: rgb(26, 153, 26);
-    }
-  }
+ 
+
 
   div.table-and-stats{
     margin: 16px;
@@ -45,27 +21,12 @@ div.container{
       width: 900px;
       height: 690px;
     }
-    table{
-      width: 900px;
-      height: fit-content;
-      
-    }
-  }
-
-
-
-  div.tableContainer{
-    margin: 0 auto;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    height: 768px;
-    background-color: white;
     
   }
 
-  .mat-header-row, .mat-row {
-    min-height: 30px;
-  }
+
+
+  
 
   div.indicatorsContainer{
     display: flex;

@@ -1,0 +1,44 @@
+div.container{
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    flex-direction: column;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+
+  div.table-and-stats{
+    margin: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    gap: 32px;
+    .stats-container{
+      width: 900px;
+      height: 690px;
+    }
+
+  }
+
+  div.indicatorsContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    div{
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: 16px;
+
+      mat-card{
+        flex: 1;
+        height: 100px;
+      }
+    }
+
+  }
+
+
+  
