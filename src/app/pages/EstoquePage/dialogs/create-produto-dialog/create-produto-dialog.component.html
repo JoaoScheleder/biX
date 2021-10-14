@@ -1,1 +1,54 @@
-<p>create-produto-dialog works!</p>
+
+<div style="display:flex;flex-direction: column; align-items: center; justify-content: center;">
+
+    
+    <div mat-dialog-content>
+        <h1 mat-dialog-title>Cadastro de Produto</h1>
+
+        <div>
+            <mat-form-field appearance="fill" style="width: 220px;">
+              <mat-label>Nome do produto</mat-label>
+              <input matInput placeholder="Produto" [(ngModel)]="data.produto_nome">
+            </mat-form-field>
+        </div>
+    
+        <div  > 
+            <mat-form-field appearance="fill" style="width: 220px;">
+                <mat-label>Preço de custo (R$)</mat-label>
+                <input matInput placeholder="Preço de custo" [(ngModel)]="data.produto_preco_custo">
+            </mat-form-field>
+        </div>
+    
+        <div  style="width: 250px;">
+            <mat-form-field appearance="fill" style="width: 220px;">
+                <mat-label>Preço de venda (R$)</mat-label>
+                <input matInput placeholder="Preço de venda" [(ngModel)]="data.produto_preco_venda">
+            </mat-form-field>
+        </div>
+
+        <div  style="width: 250px;">
+            <mat-form-field appearance="fill" style="width: 220px;">
+                <mat-label>Quantidade</mat-label>
+                <input matInput placeholder="Quantidade no estoque" [(ngModel)]="data.produto_quantidade">
+            </mat-form-field>
+        </div>
+    
+
+        <div >
+            <mat-form-field appearance="fill"  style="width: 220px;">
+                <mat-label>Data de Cadastro</mat-label>
+                <input matInput [matDatepicker]="datacadastro"  [(ngModel)] = data.produto_datacadastrado>
+                <mat-datepicker-toggle matSuffix [for]="datacadastro"></mat-datepicker-toggle>
+                <mat-datepicker #datacadastro></mat-datepicker>
+            </mat-form-field>
+
+        </div>
+           
+        <div style="display: flex; gap: 8px; width: 220px;justify-content: center;">
+            <button mat-raised-button color="primary" [mat-dialog-close]="data">Cadastrar</button>
+            <button mat-raised-button color="warn" (click)="onNoClick()" >Cancelar</button>
+        </div>
+    </div>
+    
+
+</div>

@@ -40,5 +40,6 @@ export class ClienteService {
   getClientesPorMes(ano : string) : Observable<any> {
     return this.http.get<any>('http://localhost:3000/clientes/clientesMes/2021')
   }
+  
 
 }

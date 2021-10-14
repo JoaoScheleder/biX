@@ -53,7 +53,7 @@ export class ClientesComponent implements OnInit {
       }
     ],
     chart: {
-      height: 650,
+      height: 800,
       type: "bar"
     },
     title: {
@@ -89,7 +89,7 @@ export class ClientesComponent implements OnInit {
           }
         ],
         chart: {
-          height: 650,
+          height: 800,
           type: "bar"
         },
         title: {

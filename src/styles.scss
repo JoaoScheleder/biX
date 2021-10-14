@@ -16,16 +16,16 @@ body {
 
 }   
 
+// Classes utilizadas para o componente SnackBar do Angular Material.
 .errorSnackBar{
     background-color: rgb(255, 58, 8);
     color: white;
     font-weight: bold;
-  }
-
-  .sucessSnackBar{
+}
+.sucessSnackBar{
     background-color: rgb(21, 189, 21);
     color: white;
-  }
+}
 
 
 @import "~@angular/material/theming";

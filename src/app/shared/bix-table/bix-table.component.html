@@ -53,8 +53,8 @@
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Opções</th>
           <td mat-cell *matCellDef="let row">
             <div style="display: flex;">
-              <button mat-icon-button (click) = "atualizar(row.cliente_id)"><mat-icon>edit</mat-icon></button>
-              <button mat-icon-button (click) = "excluir(row.cliente_id)"><mat-icon>delete</mat-icon></button>
+              <button mat-icon-button (click) = "atualizar(row[filterFields[0]])"><mat-icon>edit</mat-icon></button>
+              <button mat-icon-button (click) = "excluir(row[filterFields[0]])"><mat-icon>delete</mat-icon></button>
 
             </div>
           </td>

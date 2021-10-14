@@ -19,13 +19,47 @@
 
       <div class="indicatorsContainer">
         
-        <div>
 
-          <mat-card >A</mat-card>
-          <mat-card >B</mat-card>
-          <mat-card >C</mat-card>
         
-        </div>
+        
+        
+        
+        <div>
+          <mat-card class="card">
+      
+
+            <div class="indicador">
+                <p>Lucro liquido</p>
+                <h1>{{painelData.lucro_liquido | currency:'BRL' }}</h1>
+    
+            </div>
+    
+        </mat-card>
+  
+        <mat-card class="card">
+      
+
+          <div class="indicador">
+              <p>Lucro bruto</p>
+              <h1>{{painelData.lucro_bruto   | currency:'BRL'}}</h1>
+    
+          </div>
+    
+      </mat-card>
+  
+        <mat-card class="card">
+
+          <div class="indicador">
+              <p>Custo total</p>
+              <h1>{{painelData.custo_total   | currency:'BRL'}}</h1>
+  
+          </div>
+  
+      </mat-card>
+          
+         
+        
+      </div>
 
         <mat-card class="stats-container">
             <apx-chart

@@ -45,4 +45,7 @@ export class ProdutoService {
   getProdutosPorMes(ano : string) : Observable<any> {
     return this.http.get<any>(`http://localhost:3000/produtos/produtosMes/${ano}`)
   }
-}
+
+  getPainelEstoque() : Observable<any> {
+    return this.http.get<any>(`http://localhost:3000/produtos/painelEstoque`)
+  }}

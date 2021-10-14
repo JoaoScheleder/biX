@@ -29,6 +29,11 @@ export class EstoqueComponent implements OnInit {
   selection = new SelectionModel<Produto>(true, []);
   dataSource! : MatTableDataSource<Produto>;
   produto! : Produto
+  
+  painelData = {
+    "custo_total" : 0,
+    "lucro_liquido" : 0,
+    "lucro_bruto" : 0}
 
   filterFields = ['produto_id','produto_nome','produto_preco_custo','produto_preco_venda','produto_quantidade','produto_datacadastrado']
 
@@ -37,11 +42,10 @@ export class EstoqueComponent implements OnInit {
   @ViewChild(MatTable) table! : MatTable<any>;
 
 
-  public chartOptions: Partial<ChartOptions> | any = {
+  public chartOptions : Partial<ChartOptions> | any = {
     series: [
       {
-        name: "Produtos Cadastrados",
-        data: [0,0,0,0,0,0,0,0,0,0,0,0]
+        name: "Quantidade de Produtos"
       }
     ],
     chart: {
@@ -49,35 +53,43 @@ export class EstoqueComponent implements OnInit {
       type: "bar"
     },
     title: {
-      text: "Novos Produtos"
+      text:  "Relação Produto e Quantidade"
     },
     xaxis: {
-      categories: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro']
     }
   };
   constructor(private produtoService : ProdutoService , public dialog: MatDialog ,private snackBar: MatSnackBar) {}
 
   ngOnInit(){
     this.getProdutosData()
-    //this.getProdutosMes()
+    this.getProdutosMes()
+    this.getPainelEstoque()
+  }
+
+  getPainelEstoque() : void {
+    this.produtoService.getPainelEstoque().subscribe(dados => {
+      this.painelData = dados.data[0]
+      console.log(this.painelData)
+    })
+
   }
   
   getProdutosMes() : void{
+    
     this.produtoService.getProdutosPorMes('2021').subscribe(dados =>{
-
-      let mesesDisponiveis = dados.data.map((element: { mes: string; }) => {
-        return element.mes
+      
+      let listaDeProdutos : string[] = []
+      let listaQtdeProdutos : number[] = []
+      dados.data.forEach((el: { produto_nome: string; produto_quantidade: number; }) => {
+        listaDeProdutos.push(el.produto_nome)
+        listaQtdeProdutos.push(el.produto_quantidade)
       });
-      let totalPorMes = [0,0,0,0,0,0,0,0,0,0,0,0]
-      dados.data.map((element: { total: number; mes_numero : number }) => {
-        totalPorMes[element.mes_numero-1] = element.total
-      });
-
+      console.log(listaDeProdutos)
       this.chartOptions = {
         series: [
           {
-            name: "Clientes Cadastrados",
-            data: totalPorMes
+            name: "Quantidade de Produtos",
+            data: listaQtdeProdutos
           }
         ],
         chart: {
@@ -85,10 +97,10 @@ export class EstoqueComponent implements OnInit {
           type: "bar"
         },
         title: {
-          text: "Novos Clientes"
+          text:  "Relação Produto e Quantidade"
         },
         xaxis: {
-          categories: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro']
+          categories: listaDeProdutos
         }
       };
     })
@@ -128,6 +140,8 @@ export class EstoqueComponent implements OnInit {
 
         this.getProdutosData()
         this.getProdutosMes()
+        this.getPainelEstoque()
+
       }
       )
     });
@@ -158,6 +172,8 @@ export class EstoqueComponent implements OnInit {
          
           this.getProdutosData()
           this.getProdutosMes()
+          this.getPainelEstoque()
+
         },
         error =>{
             console.log(error)
@@ -177,7 +193,9 @@ export class EstoqueComponent implements OnInit {
           console.log(data)
           this.getProdutosData()
           this.getProdutosMes()
-          this.apresentarSnackBar("Erro ao excluir", 2000, 'errorSnackBar')
+          this.getPainelEstoque()
+
+          this.apresentarSnackBar("Produto excluido com suceso", 2000, 'sucessSnackBar')
 
         },
         error =>{
@@ -196,6 +214,8 @@ export class EstoqueComponent implements OnInit {
           if (index + 1 == selection.selected.length) {
             this.getProdutosData()
             this.getProdutosMes()
+            this.getPainelEstoque()
+
             selection.clear()
           }
         }, (error) => {
